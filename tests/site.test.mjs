@@ -30,5 +30,5 @@ test("interactive checklist has checkboxes and a script handler", async () => {
   const js = await readFile(new URL("script.js", root), "utf8");
   assert.match(html, /class="checks"/);
   assert.match(html, /type="checkbox"/);
-  assert.match(js, /addEventListener\("change"/);
+  assert.match(js, /addEventListener\(['"]change['"]/);
 });
