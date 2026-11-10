@@ -2,19 +2,29 @@ name: Web project CI
 
 on:
   push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+
 jobs:
-  check:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Get source code
         uses: actions/checkout@v4
-      - name: Check required files
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run automated tests
+        run: npm test
+      - name: Build website
+        run: npm run build
+      - name: Verify build output
         run: |
-          test -f index.html
-          test -f style.css
-          test -f script.js
-          echo "Project files are ready"
+          test -f dist/index.html
+          test -f dist/style.css
+          test -f dist/script.js
+          echo "Build and tests passed"
