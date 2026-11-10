@@ -1,8 +1,91 @@
 <!doctype html>
-<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Учебный веб-проект о непрерывной интеграции и публикации сайтов."><title>CI/CD — путь веб-проекта</title><link rel="stylesheet" href="style.css"><script src="script.js" defer></script></head>
-<body><header class="hero"><nav class="nav"><a class="brand" href="#">CI<span>/</span>CD</a><a href="#stages">Этапы</a><a href="#pipeline">Pipeline</a></nav><div class="hero-content"><p class="eyebrow">DEVOPS · ПРАКТИЧЕСКАЯ РАБОТА</p><h1>От первого коммита<br>до работающего сайта.</h1><p class="lead">Непрерывная интеграция и публикация веб-проектов — последовательный процесс, который помогает выпускать обновления быстрее и безопаснее.</p><a class="button" href="#stages">Изучить этапы <span>→</span></a></div><div class="hero-mark" aria-hidden="true">01—08</div></header>
-<main><section class="intro"><p class="eyebrow">ОСНОВНЫЕ ПОНЯТИЯ</p><div class="intro-grid"><h2>DevOps объединяет<br>разработку и эксплуатацию.</h2><p>CI автоматически проверяет изменения кода в общем репозитории. CD подготавливает проверенную версию к выпуску или автоматически развёртывает её в рабочей среде.</p></div></section>
-<section class="stages" id="stages"><div class="section-head"><div><p class="eyebrow">ЖИЗНЕННЫЙ ЦИКЛ</p><h2>Восемь этапов<br>публикации</h2></div><p class="section-note">Каждый шаг делает выпуск предсказуемее. Отмечайте этапы по мере изучения.</p></div><div class="stage-grid">
-<article class="stage"><span>01</span><h3>Разработка</h3><p>Создание HTML-, CSS-, JavaScript-файлов и серверной части.</p></article><article class="stage"><span>02</span><h3>Контроль версий</h3><p>Фиксация изменений с помощью Git и отправка кода в GitHub.</p></article><article class="stage"><span>03</span><h3>Проверка CI</h3><p>Получение исходного кода, установка среды и зависимостей.</p></article><article class="stage"><span>04</span><h3>Качество и тесты</h3><p>Линтинг, статический анализ и автоматическое тестирование.</p></article><article class="stage"><span>05</span><h3>Сборка</h3><p>Подготовка готовой версии приложения и сохранение артефакта.</p></article><article class="stage"><span>06</span><h3>Подготовка</h3><p>Проверка настроек, секретов, зависимостей и целевой среды.</p></article><article class="stage"><span>07</span><h3>Развертывание</h3><p>Передача проверенной версии на сервер или GitHub Pages.</p></article><article class="stage"><span>08</span><h3>Проверка сайта</h3><p>Тестирование страниц, ссылок, ресурсов и мобильного отображения.</p></article></div></section>
-<section class="pipeline" id="pipeline"><p class="eyebrow">АВТОМАТИЗАЦИЯ</p><h2>Что происходит<br>после push?</h2><ol class="pipeline-list"><li><b>GitHub получает изменения</b><span>Срабатывает событие push или pull_request.</span></li><li><b>Runner запускает workflow</b><span>actions/checkout получает исходный код.</span></li><li><b>CI проверяет проект</b><span>Проверяется наличие index.html, style.css и script.js.</span></li><li><b>CD публикует сайт</b><span>При успешной проверке файлы передаются в GitHub Pages.</span></li></ol></section>
-<section class="check"><div><p class="eyebrow">ПОСЛЕ ПУБЛИКАЦИИ</p><h2>Проверьте результат</h2><p>Отметьте пункты, которые вы проверили в опубликованной версии.</p></div><div class="checks"><label><input type="checkbox"> Главная страница открывается</label><label><input type="checkbox"> Стили и скрипты загружаются</label><label><input type="checkbox"> Ссылки и меню работают</label><label><input type="checkbox"> Сайт корректно выглядит на телефоне</label></div></section></main><footer><span>CI/CD · УЧЕБНЫЙ ПРОЕКТ</span><span>Создано с GitHub Actions</span></footer></body></html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Учебный проект: этапы CI/CD, проверка и публикация веб-сайта с GitHub Actions.">
+  <title>CI/CD — от кода до публикации</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav"><a class="brand" href="#">CI<span>/</span>CD</a><a href="#lifecycle">Жизненный цикл</a><a href="#ci">Этапы CI</a><a href="#deploy">Публикация</a></nav>
+    <div class="hero-content">
+      <p class="eyebrow">DEVOPS · ПРАКТИЧЕСКАЯ РАБОТА</p>
+      <h1>От первого коммита<br>до работающего сайта.</h1>
+      <p class="lead">Непрерывная интеграция и публикация веб-проектов — последовательный процесс, который помогает обнаруживать ошибки до выпуска и безопасно доставлять обновления пользователям.</p>
+      <a class="button" href="#lifecycle">Изучить процесс <span>→</span></a>
+    </div>
+    <div class="hero-mark" aria-hidden="true">CI—CD</div>
+  </header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow">ОСНОВНЫЕ ПОНЯТИЯ</p>
+      <div class="intro-grid">
+        <h2>DevOps объединяет<br>разработку и эксплуатацию.</h2>
+        <p><b>DevOps</b> — подход, объединяющий разработку и эксплуатацию. <b>CI</b> (Continuous Integration) — регулярное объединение изменений с автоматическими проверками. <b>CD</b> — Continuous Delivery (подготовка проверенной версии к выпуску) или Continuous Deployment (автоматическая публикация прошедших проверки изменений).</p>
+      </div>
+    </section>
+    <section class="stages" id="lifecycle">
+      <div class="section-head"><div><p class="eyebrow">ЖИЗНЕННЫЙ ЦИКЛ</p><h2>От разработки<br>до проверки</h2></div><p class="section-note">Веб-проект проходит последовательные этапы: от создания исходных файлов до проверки доступности сайта после развертывания.</p></div>
+      <div class="stage-grid">
+        <article class="stage"><span>01</span><h3>Разработка</h3><p>Создание HTML-, CSS-, JavaScript-файлов и серверной части.</p></article>
+        <article class="stage"><span>02</span><h3>Контроль версий</h3><p>Фиксация изменений с помощью Git и отправка кода в GitHub.</p></article>
+        <article class="stage"><span>03</span><h3>Автоматическая проверка</h3><p>Запуск workflow после push или pull_request.</p></article>
+        <article class="stage"><span>04</span><h3>Сборка</h3><p>Формирование готовой версии проекта, если используется сборщик.</p></article>
+        <article class="stage"><span>05</span><h3>Подготовка</h3><p>Выбор файлов, настроек, зависимостей и целевого окружения.</p></article>
+        <article class="stage"><span>06</span><h3>Развертывание</h3><p>Передача подготовленных файлов на сервер или хостинг.</p></article>
+        <article class="stage"><span>07</span><h3>Проверка</h3><p>Открытие опубликованного сайта и тестирование функций.</p></article>
+        <article class="stage"><span>08</span><h3>Откат при сбое</h3><p>Возврат к предыдущей стабильной версии при критической ошибке, если это предусмотрено.</p></article>
+      </div>
+    </section>
+    <section class="ci-details" id="ci">
+      <p class="eyebrow">CONTINUOUS INTEGRATION</p><h2>Что выполняет CI</h2>
+      <p class="section-note">GitHub Actions запускает workflow на виртуальной машине — runner. В этом проекте обязательные файлы проверяются автоматически.</p>
+      <div class="detail-grid">
+        <article><span>01</span><h3>Получение исходного кода</h3><p><code>actions/checkout</code> получает актуальную версию проекта из репозитория.</p></article>
+        <article><span>02</span><h3>Подготовка среды</h3><p>Выбирается операционная система и необходимая версия среды выполнения, например Node.js или Python.</p></article>
+        <article><span>03</span><h3>Установка зависимостей</h3><p>При наличии сторонних библиотек устанавливаются npm-пакеты или зависимости из файла проекта.</p></article>
+        <article><span>04</span><h3>Проверка качества</h3><p>Линтеры и статические анализаторы помогают находить ошибки до запуска приложения.</p></article>
+        <article><span>05</span><h3>Автоматические тесты</h3><p>Модульные, интеграционные и сквозные тесты проверяют ожидаемое поведение программы.</p></article>
+        <article><span>06</span><h3>Сборка проекта</h3><p>Исходные файлы преобразуются в готовую версию. Простому HTML-сайту отдельная сборка не требуется.</p></article>
+        <article><span>07</span><h3>Сохранение артефакта</h3><p>Готовые файлы сохраняются как результат workflow и передаются на этап публикации.</p></article>
+      </div>
+      <div class="notice"><b>Проверка в этом репозитории</b><p>Workflow <code>Web project CI</code> проверяет наличие <code>index.html</code>, <code>style.css</code> и <code>script.js</code> при каждом push в main и при pull_request в main. Если обязательный файл отсутствует, проверка завершается со статусом failure.</p></div>
+    </section>
+    <section class="pipeline" id="deploy">
+      <p class="eyebrow">CONTINUOUS DELIVERY / DEPLOYMENT</p><h2>Подготовка и публикация</h2>
+      <ol class="pipeline-list">
+        <li><b>Определить целевую среду</b><span>Тестовый сервер или production — рабочая среда для пользователей.</span></li>
+        <li><b>Проверить настройки</b><span>Адреса внешних сервисов, доступность базы данных и необходимые файлы.</span></li>
+        <li><b>Обеспечить безопасный доступ</b><span>Пароли и токены хранятся в Secrets и Variables, а не в исходном коде.</span></li>
+        <li><b>Получить успешный результат CI</b><span>Для публикации выбирается проверенная версия или артефакт.</span></li>
+        <li><b>Развернуть приложение</b><span>Файлы передаются на хостинг; выполняются команды запуска, если они предусмотрены.</span></li>
+        <li><b>Проверить результат</b><span>Сайт открывается в браузере, проверяются страницы, ресурсы и пользовательские действия.</span></li>
+      </ol>
+    </section>
+    <section class="safety">
+      <p class="eyebrow">БЕЗОПАСНОСТЬ И НАДЁЖНОСТЬ</p><h2>Перед каждым выпуском</h2>
+      <div class="safety-grid">
+        <p>Не хранить пароли, API-ключи и токены в репозитории. Использовать защищённые Secrets и Variables.</p>
+        <p>Выдавать workflow только минимально необходимые разрешения и проверять сторонние Actions и зависимости.</p>
+        <p>Ограничивать доступ к production-среде и создавать резервную копию перед изменениями.</p>
+        <p>При критической ошибке использовать заранее подготовленный план отката к предыдущей стабильной версии.</p>
+      </div>
+    </section>
+    <section class="check">
+      <div><p class="eyebrow">ПОСЛЕ ПУБЛИКАЦИИ</p><h2>Проверьте результат</h2><p>Отметьте пункты, которые вы проверили в опубликованной версии.</p></div>
+      <div class="checks">
+        <label><input type="checkbox"> Главная страница открывается</label>
+        <label><input type="checkbox"> Изображения, стили и скрипты загружаются</label>
+        <label><input type="checkbox"> Ссылки и меню работают</label>
+        <label><input type="checkbox"> Сайт корректно выглядит на телефоне</label>
+        <label><input type="checkbox"> Формы и основные действия работают</label>
+        <label><input type="checkbox"> Нет критических ошибок в консоли браузера</label>
+      </div>
+    </section>
+  </main>
+  <footer><span>CI/CD · УЧЕБНЫЙ ПРОЕКТ</span><span>GitHub Actions · GitHub Pages</span></footer>
+</body>
+</html>
